@@ -1,0 +1,9 @@
+# Arquivo-fonte do logo (não usado pelo site)
+assets/img/logo-original.png
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos de marca na raiz (não fazem parte do site)
+/*.png

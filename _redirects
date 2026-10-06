@@ -1,3 +1,0 @@
-# Endereço provisório do Netlify -> domínio oficial (evita conteúdo duplicado no Google).
-# Se o site no Netlify tiver outro nome, ajuste "brazzaria-eventos" abaixo.
-https://brazzaria-eventos.netlify.app/*  https://brazzariaeventos.com.br/:splat  301!

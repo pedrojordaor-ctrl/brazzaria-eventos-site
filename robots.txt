@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://brazzariaeventos.com.br/sitemap.xml
+Sitemap: https://www.brazzariaeventos.com.br/sitemap.xml

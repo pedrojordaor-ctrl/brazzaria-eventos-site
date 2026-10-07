@@ -925,9 +925,9 @@ em { font-style: normal; color: var(--ember-2); }
 .footer__contact a[hidden] { display: none; }
 .footer__contact .ico-wa, .ico-ig { width: 18px; height: 18px; fill: currentColor; flex: none; }
 .footer__bottom { align-items: center; flex-wrap: wrap; }
-.footer__legal { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 0 4px; white-space: pre-wrap; }
+.footer__legal { display: inline; line-height: 1.8; }
 .footer__legal i { font-style: normal; color: var(--dim); margin: 0 6px; }
-.credit { display: inline-flex; align-items: center; gap: 6px; color: var(--dim); font-size: 13.5px; }
+.credit { display: inline-flex; align-items: center; gap: 6px; vertical-align: middle; color: var(--dim); font-size: 13.5px; }
 .credit img { height: 18px; width: auto; }
 .credit b { color: #fff; font-weight: 700; }
 .credit em { color: #FF5A28; font-weight: 700; }

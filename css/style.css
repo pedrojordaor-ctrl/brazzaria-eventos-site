@@ -918,3 +918,27 @@ em { font-style: normal; color: var(--ember-2); }
   .about__copy .about__open { font-size: 19px; }
   .essence__text p { font-size: 17px; }
 }
+
+/* ---------- Rodapé: ícones e crédito ---------- */
+
+.footer__contact a { display: inline-flex; align-items: center; gap: 9px; }
+.footer__contact a[hidden] { display: none; }
+.footer__contact .ico-wa, .ico-ig { width: 18px; height: 18px; fill: currentColor; flex: none; }
+.footer__bottom { align-items: center; flex-wrap: wrap; }
+.credit {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--dim);
+}
+.credit img { height: 22px; width: auto; }
+.credit b {
+  display: inline-flex; flex-direction: column; line-height: 1; gap: 2px;
+  color: #fff; font-weight: 700; font-size: 13.5px; letter-spacing: .01em;
+}
+.credit b small {
+  font-size: 8px; font-weight: 700; letter-spacing: .32em; text-transform: uppercase;
+  color: #FF5A28;
+}
+.credit:hover { color: var(--muted); }
+@media (max-width: 600px) {
+  .footer__bottom { align-items: flex-start; }
+}

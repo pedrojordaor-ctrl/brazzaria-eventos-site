@@ -7,3 +7,6 @@ desktop.ini
 
 # Arquivos de marca na raiz (não fazem parte do site)
 /*.png
+
+# Cardápio digital (PDF e fonte) — não faz parte do site
+/Cardapio digital/

@@ -15,8 +15,14 @@ const CONFIG = {
 const MENUS = [
   {
     id: 'espetos', name: 'Espetos', price: 70,
-    note: 'Um encontro ao redor da brasa.',
-    pending: true,
+    note: 'Um encontro ao redor da brasa. Espetos variados, servidos à vontade.',
+    bovino: ['Picanha', 'Alcatra', 'Cupim', 'Fraldinha', 'Medalhão bovino com bacon'],
+    suino: ['Linguiça toscana', 'Panceta', 'Lombo com bacon'],
+    frango: ['Sobrecoxa', 'Meio da asa', 'Coração de galinha', 'Medalhão de frango com bacon'],
+    mar: ['Camarão', 'Filé de tilápia'],
+    vegetais: ['Queijo coalho', 'Pão de alho', 'Legumes na brasa', 'Abacaxi com canela'],
+    guarnicoes: ['Arroz branco', 'Farofa temperada', 'Maionese caseira', 'Vinagrete', 'Salada verde'],
+    info: 'A seleção de espetos é montada com você na proposta, conforme o perfil do evento.',
   },
   {
     id: 'basic', name: 'Basic', price: 75,
@@ -30,29 +36,34 @@ const MENUS = [
     id: 'select', name: 'Select', price: 90,
     note: 'Mais cortes, mais sabor. Picanha e choripán entram na roda.',
     entradas: ['Pão de alho', 'Provoleta ou queijo coalho com mel', 'Legumes na brasa', 'Choripán com chimichurri'],
-    cortes: ['Picanha prata', 'Bife de chorizo ou bife ancho', 'Linguiça toscana', 'Sobrecoxa ou meio da asa de frango', 'Panceta suína ou picanha suína', 'Coração de galinha'],
+    cortes: ['Picanha', 'Bife de chorizo ou bife ancho', 'Linguiça toscana', 'Sobrecoxa ou meio da asa de frango', 'Panceta suína ou picanha suína', 'Coração de galinha'],
     guarnicoes: ['Arroz branco', 'Farofa temperada', 'Maionese caseira', 'Vinagrete', 'Salada verde'],
     sobremesas: ['Abacaxi caramelizado com açúcar e canela'],
   },
   {
     id: 'prime', name: 'Prime', price: 130,
-    note: 'A brasa em outro nível: picanha ouro, ancho ao gorgonzola e burguer.',
+    note: 'A brasa em outro nível: picanha, ancho ao gorgonzola e burguer.',
     entradas: ['Pão de alho', 'Provoleta ou queijo coalho com mel', 'Legumes na brasa', 'Choripán com chimichurri'],
-    cortes: ['Picanha ouro', 'Bife ancho ao gorgonzola', 'Bife de chorizo', 'Linguiça artesanal', 'Sobrecoxa ou meio da asa de frango', 'Panceta suína', 'Coração de galinha', 'Costela suína no barbecue'],
+    cortes: ['Picanha', 'Bife ancho ao gorgonzola', 'Bife de chorizo', 'Linguiça artesanal', 'Sobrecoxa ou meio da asa de frango', 'Panceta suína', 'Coração de galinha', 'Costela suína no barbecue'],
     guarnicoes: ['Arroz biro-biro', 'Farofa crocante com bacon', 'Maionese caseira com cebola caramelizada', 'Vinagrete', 'Salada verde'],
     burguer: ['Burguer na brasa'],
   },
   {
     id: 'premium', name: 'Premium', price: 170,
-    note: 'Cada detalhe extraordinário. Picanha nobre e carré de cordeiro.',
+    note: 'Cada detalhe extraordinário. Picanha, cupim e carré de cordeiro.',
     entradas: ['Pão de alho', 'Provoleta ou queijo coalho com mel', 'Legumes na brasa', 'Choripán com chimichurri'],
-    cortes: ['Picanha nobre', 'Bife de chorizo', 'Cupim ou costela bovina', 'Linguiça artesanal', 'Sobrecoxa ou meio da asa de frango', 'Panceta suína', 'Coração de galinha', 'Costela suína no barbecue', 'Carré de cordeiro'],
+    cortes: ['Picanha', 'Bife de chorizo', 'Cupim ou costela bovina', 'Linguiça artesanal', 'Sobrecoxa ou meio da asa de frango', 'Panceta suína', 'Coração de galinha', 'Costela suína no barbecue', 'Carré de cordeiro'],
     guarnicoes: ['Arroz biro-biro', 'Farofa crocante com bacon', 'Maionese caseira com cebola caramelizada', 'Vinagrete', 'Salada verde'],
     burguer: ['Burguer na brasa'],
   },
 ];
 
 const GROUPS = [
+  ['bovino', 'Bovino'],
+  ['suino', 'Suíno'],
+  ['frango', 'Frango'],
+  ['mar', 'Frutos do mar'],
+  ['vegetais', 'Queijos e vegetais'],
   ['entradas', 'Entradas'],
   ['cortes', 'Cortes'],
   ['guarnicoes', 'Guarnições'],
@@ -60,8 +71,17 @@ const GROUPS = [
   ['burguer', 'Burguer'],
 ];
 
+/* Adicionais (todos sob consulta; entram na proposta final). */
 const SERVICES = [
-  { id: 'bartender', name: 'Bartender', desc: 'Drinks e coquetéis. Bebidas e insumos à parte.' },
+  { id: 'garcom', name: 'Garçom', desc: 'Serviço de mesa durante todo o evento.' },
+  { id: 'copeiro', name: 'Copeiro', desc: 'Apoio no bar, copos e reposição.' },
+  { id: 'bartender', name: 'Bartender', desc: 'Drinks e coquetéis no seu evento.' },
+  { id: 'bebidas-soft', name: 'Bebidas soft', desc: 'Refrigerantes, sucos e água.' },
+  { id: 'bebidas-cerveja', name: 'Cerveja e caipirinha', desc: 'Pacote de bebidas alcoólicas clássico.' },
+  { id: 'bebidas-drinks', name: 'Drinks refinados', desc: 'Pacote de coquetelaria premium.' },
+  { id: 'utensilios', name: 'Mesas, cadeiras e toalhas', desc: 'Estrutura e utensílios para os convidados.' },
+  { id: 'recreacao', name: 'Recreação', desc: 'Matraka ou mágica para animar a festa.' },
+  { id: 'seguranca', name: 'Segurança', desc: 'Equipe de segurança para o evento.' },
   { id: 'doces', name: 'Doces personalizados', desc: 'Um toque de confeitaria na celebração.' },
   { id: 'bolo', name: 'Bolo de celebração', desc: 'Tamanho e acabamento a combinar.' },
 ];
@@ -165,12 +185,7 @@ function renderPanel(id) {
   });
   panelEl.setAttribute('aria-labelledby', `tab-${id}`);
 
-  const groups = m.pending
-    ? `<div class="panel__pending">
-         <b>Espetos variados na brasa, servidos à vontade.</b>
-         A composição dos espetos e acompanhamentos é montada com você no orçamento.
-       </div>`
-    : GROUPS.filter(([k]) => m[k]?.length).map(([k, label]) => `
+  const groups = GROUPS.filter(([k]) => m[k]?.length).map(([k, label]) => `
         <div class="group group--${k}">
           <h4>${label}</h4>
           <ul>${m[k].map((item) => {
@@ -178,6 +193,7 @@ function renderPanel(id) {
             return `<li${isNew ? ' class="is-new"' : ''}>${esc(item)}</li>`;
           }).join('')}</ul>
         </div>`).join('');
+  const info = m.info ? `<p class="panel__info">${esc(m.info)}</p>` : '';
 
   panelEl.innerHTML = `
     <div class="panel__side">
@@ -190,7 +206,7 @@ function renderPanel(id) {
       </div>
       <a class="btn btn--ember" href="#orcamento" data-pick="${m.id}">Simular com o ${m.name}</a>
     </div>
-    <div class="panel__groups">${groups}</div>`;
+    <div class="panel__groups">${groups}${info}</div>`;
 
   panelEl.classList.remove('panel-enter');
   void panelEl.offsetWidth;
@@ -274,7 +290,7 @@ function readState() {
   return {
     format: fd.get('format'),
     type: fd.get('type'),
-    date: fd.get('date'),
+    date: parseDate(fd.get('date')),
     city: (fd.get('city') || '').trim(),
     guests: clampGuests(fd.get('guests')),
     hours: Number(fd.get('hours')),
@@ -299,10 +315,12 @@ function calc(s) {
   return { total, pending };
 }
 
-const fmtDate = (iso) => {
-  if (!iso) return '';
-  const [y, m, d] = iso.split('-');
-  return `${d}/${m}/${y}`;
+const parseDate = (v) => {
+  const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec((v || '').trim());
+  if (!m) return '';
+  const [d, mo, y] = m.slice(1).map(Number);
+  const dt = new Date(y, mo - 1, d);
+  return dt.getFullYear() === y && dt.getMonth() === mo - 1 && dt.getDate() === d ? m[0] : '';
 };
 
 function buildMessage(s, r) {
@@ -311,7 +329,7 @@ function buildMessage(s, r) {
     '',
     `• Formato: ${s.format === 'chef' ? 'Churrasqueiro exclusivo' : 'Buffet completo'}`,
     `• Evento: ${s.type}`,
-    s.date && `• Data: ${fmtDate(s.date)}`,
+    s.date && `• Data: ${s.date}`,
     s.city && `• Local: ${s.city}`,
     `• Convidados: ${s.guests}`,
     `• Duração: ${s.hours} horas`,
@@ -359,7 +377,7 @@ function update() {
   const rows = [
     ['Formato', isChef ? 'Churrasqueiro' : 'Buffet completo'],
     ['Evento', s.type],
-    s.date && ['Data', fmtDate(s.date)],
+    s.date && ['Data', s.date],
     ['Convidados', s.guests],
     ['Duração', `${s.hours}h`],
     !isChef && ['Cardápio', s.menu.name],
@@ -393,8 +411,11 @@ function toast(msg) {
   toastTimer = setTimeout(() => t.classList.remove('is-on'), 2200);
 }
 
-// Data mínima: hoje
-form.date.min = new Date().toISOString().slice(0, 10);
+// Máscara dd/mm/aaaa no campo de data
+form.date.addEventListener('input', () => {
+  const digits = form.date.value.replace(/\D/g, '').slice(0, 8);
+  form.date.value = digits.replace(/^(\d{2})(\d)/, '$1/$2').replace(/^(\d{2}\/\d{2})(\d)/, '$1/$2');
+});
 setGuests(50);
 
 /* ---------- Brasas no hero ---------- */

@@ -850,3 +850,71 @@ em { font-style: normal; color: var(--ember-2); }
 .notfound { min-height: 100vh; display: grid; place-items: center; }
 .notfound img { width: 180px; height: auto; margin: 0 auto 32px; mix-blend-mode: screen; }
 .notfound .section__lead { margin-inline: auto; }
+
+/* ---------- Quem somos: essência ---------- */
+
+.about__copy .about__open { font-size: 21px; color: var(--bone); line-height: 1.45; }
+.about__copy .about__open strong { color: var(--ember-2); }
+
+.world {
+  list-style: none; margin: clamp(56px, 7vw, 90px) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.world li {
+  padding: 26px 0 0; border-top: 2px solid var(--line-2);
+  font-size: 17px; line-height: 1.5; color: var(--muted);
+}
+.world li b { color: var(--bone); font-weight: 700; }
+.world__meet {
+  max-width: 17em;
+  margin-top: 36px;
+  font-size: clamp(22px, 2.6vw, 32px); font-weight: 850; font-stretch: 112%; line-height: 1.1;
+  text-transform: uppercase; letter-spacing: -.01em; color: var(--bone);
+}
+
+.essence {
+  margin-top: clamp(64px, 8vw, 110px);
+  display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(32px, 6vw, 90px); align-items: start;
+}
+.essence__fire { position: sticky; top: calc(var(--header-h) + 24px); }
+.essence__lead { font-size: 18px; color: var(--muted); max-width: 22em; }
+.essence__big {
+  margin-top: 22px;
+  font-size: clamp(40px, 5.6vw, 76px); font-weight: 900; font-stretch: 122%; line-height: .92;
+  text-transform: uppercase; letter-spacing: -.025em; color: var(--bone);
+}
+.essence__text p { margin-top: 20px; font-size: 18px; line-height: 1.6; color: #d7cdc2; max-width: 34em; }
+.essence__text p:first-child { margin-top: 0; }
+.essence__text strong { color: var(--bone); }
+.essence__is {
+  list-style: none; margin: 32px 0; padding: 0;
+  border-left: 3px solid var(--ember);
+}
+.essence__is li {
+  padding: 10px 0 10px 22px;
+  font-size: clamp(19px, 1.8vw, 24px); font-weight: 800; font-stretch: 108%; line-height: 1.2; color: var(--bone);
+}
+.essence__text .essence__close {
+  margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line);
+  font-size: 22px; font-weight: 700; color: var(--bone); line-height: 1.35;
+}
+.beyond__note { margin-top: 18px; font-size: 15px; color: var(--muted); }
+
+/* Nota do cardápio (ex.: Espetos) */
+.panel__info {
+  grid-column: 1 / -1; align-self: end;
+  margin-top: 4px; padding: 14px 18px;
+  border: 1px dashed var(--line-2); border-radius: var(--radius-sm);
+  font-size: 14px; color: var(--muted); line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .world { grid-template-columns: 1fr; gap: 0; }
+  .world li { padding: 18px 0; border-top: 1px solid var(--line); }
+  .essence { grid-template-columns: 1fr; }
+  .essence__fire { position: static; }
+}
+@media (max-width: 600px) {
+  .about__copy .about__open { font-size: 19px; }
+  .essence__text p { font-size: 17px; }
+}

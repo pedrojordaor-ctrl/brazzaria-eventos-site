@@ -963,11 +963,16 @@ em { font-style: normal; color: var(--ember-2); }
 .format__cta { align-self: flex-start; margin-top: 8px; position: relative; z-index: 1; }
 .format:hover .format__cta { border-color: var(--accent); }
 .format--photo {
-  background:
-    linear-gradient(to right, rgba(12,11,10,.96) 0%, rgba(12,11,10,.86) 50%, rgba(12,11,10,.55) 100%),
-    url("../assets/img/hamburgada.webp?v=2") center 55% / cover no-repeat;
+  background-image:
+    linear-gradient(to right, rgba(12,11,10,.97) 0%, rgba(12,11,10,.92) 42%, rgba(12,11,10,.72) 72%, rgba(12,11,10,.5) 100%),
+    var(--photo);
+  background-position: var(--pos, center 55%); background-size: cover; background-repeat: no-repeat;
 }
 .format--photo::after { display: none; }
+.format--feijoada { --photo: url("../assets/img/feijoada.webp"); --pos: right 40%; }
+.format--paella { --photo: url("../assets/img/paella.webp"); --pos: center 60%; }
+.format--hamburgada { --photo: url("../assets/img/hamburgada.webp?v=2"); }
+.format--texmex { --photo: url("../assets/img/texmex.webp"); --pos: right center; }
 .formats__note { margin-top: 28px; font-size: 15px; color: var(--muted); }
 .formats__note a { color: var(--flame); text-underline-offset: 3px; }
 

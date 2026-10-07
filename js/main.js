@@ -110,7 +110,25 @@ $$('[data-wa]').forEach((a) => {
 });
 if (CONFIG.instagram) Object.assign($('[data-instagram]'), { href: CONFIG.instagram, hidden: false, target: '_blank', rel: 'noopener' });
 if (CONFIG.email) Object.assign($('[data-email]'), { href: `mailto:${CONFIG.email}`, hidden: false });
-$$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
+$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
+
+/* Outros formatos: WhatsApp já com o formato escolhido e espaço para detalhar */
+const formatMessage = (name) => [
+  `Olá! Me interessei pelo formato *${name}* da Brazzaria para o meu evento.`,
+  '',
+  'Sobre a festa:',
+  '• Tipo de evento: ',
+  '• Data: ',
+  '• Cidade / bairro: ',
+  '• Convidados: ',
+  '',
+  'Mais detalhes: ',
+].join('\n');
+$('[data-format]').forEach((a) => {
+  a.href = waLink(formatMessage(a.dataset.format));
+  a.target = '_blank';
+  a.rel = 'noopener';
+});
 
 /* ---------- Header / nav ---------- */
 

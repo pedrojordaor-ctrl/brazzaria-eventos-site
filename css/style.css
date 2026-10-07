@@ -960,7 +960,8 @@ em { font-style: normal; color: var(--ember-2); }
 .format p:not(.format__tag):not(.format__for) { color: var(--muted); font-size: 16px; line-height: 1.55; }
 .format__for { font-size: 14px; color: var(--muted); line-height: 1.45; padding-top: 10px; border-top: 1px dashed var(--line); }
 .format__for b { color: var(--bone); }
-.format__cta { align-self: flex-start; margin-top: 8px; position: relative; z-index: 1; }
+.format__cta { align-self: flex-start; margin-top: auto; padding-top: 0; position: relative; z-index: 1; }
+.format__for { margin-bottom: 8px; }
 .format:hover .format__cta { border-color: var(--accent); }
 .format--photo {
   background-image:

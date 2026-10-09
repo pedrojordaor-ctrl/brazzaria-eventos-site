@@ -159,7 +159,7 @@ em { font-style: normal; color: var(--ember-2); }
 .header__brand {
   display: flex; align-items: center; gap: 10px; text-decoration: none;
 }
-.header__brand img { height: 76px; width: auto; filter: drop-shadow(0 2px 10px rgba(0,0,0,.6)); }
+.header__brand img { height: 76px; width: auto; }
 
 .nav { display: flex; align-items: center; gap: 30px; }
 .nav a:not(.btn) {

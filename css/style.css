@@ -129,6 +129,13 @@ em { font-style: normal; color: var(--ember-2); }
 .btn--ghost { border-color: var(--line-2); color: var(--bone); }
 .btn--ghost:hover { border-color: var(--bone); background: rgba(255,255,255,.04); }
 
+.btn--wa {
+  --bg: #25d366;
+  color: #fff;
+  box-shadow: 0 8px 24px -10px rgba(37, 211, 102, .7), inset 0 1px 0 rgba(255,255,255,.2);
+}
+.btn--wa:hover { --bg: #1ebe5d; }
+
 .ico-wa { width: 20px; height: 20px; fill: currentColor; flex: none; }
 
 /* ---------- Header ---------- */
@@ -936,6 +943,7 @@ em { font-style: normal; color: var(--ember-2); }
 .footer__contact a { display: inline-flex; align-items: center; gap: 9px; }
 .footer__contact a[hidden] { display: none; }
 .footer__contact .ico-wa, .ico-ig { width: 18px; height: 18px; fill: currentColor; flex: none; }
+.footer__contact .ico-wa { fill: #25d366; }
 .footer__bottom { align-items: center; flex-wrap: wrap; }
 .footer__legal { display: inline; line-height: 1.8; }
 .footer__legal i { font-style: normal; color: var(--dim); margin: 0 6px; }

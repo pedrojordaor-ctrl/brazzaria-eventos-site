@@ -315,6 +315,7 @@ function readState() {
     menu: MENUS.find((m) => m.id === fd.get('menu')),
     services: fd.getAll('services').map((id) => SERVICES.find((s) => s.id === id)),
     name: (fd.get('name') || '').trim(),
+    phone: (fd.get('phone') || '').trim(),
   };
 }
 
@@ -419,6 +420,45 @@ $('#sum-copy').addEventListener('click', async () => {
     toast('Não foi possível copiar');
   }
 });
+
+/* Registro do pedido de orçamento na plataforma de gestão.
+   Só acontece quando a pessoa informou o WhatsApp (campo opcional, com o
+   aviso logo abaixo dele). O envio é em segundo plano: se falhar, o
+   WhatsApp abre do mesmo jeito. */
+const LEAD_URL = '/.netlify/functions/lead';
+let leadSent = '';
+function sendLead() {
+  const s = readState();
+  const digits = s.phone.replace(/\D/g, '');
+  if (digits.length < 10 || digits.length > 13) return;
+  const mark = digits + '|' + lastMessage;
+  if (mark === leadSent) return; // mesmo pedido, segundo clique
+  leadSent = mark;
+  const q = new URLSearchParams(location.search);
+  const pick = (k) => q.get(k) || undefined;
+  const body = JSON.stringify({
+    name: s.name || undefined,
+    phone: s.phone,
+    city: s.city || undefined,
+    service: `${s.format === 'chef' ? 'Churrasqueiro exclusivo' : 'Buffet completo'} · ${s.type}`,
+    message: lastMessage,
+    website: form.website.value,
+    landing_page: location.href,
+    referrer: document.referrer || undefined,
+    utm: {
+      source: pick('utm_source'), medium: pick('utm_medium'), campaign: pick('utm_campaign'),
+      term: pick('utm_term'), content: pick('utm_content'),
+    },
+    click_ids: { gclid: pick('gclid'), fbclid: pick('fbclid'), msclkid: pick('msclkid') },
+  });
+  try {
+    const blob = new Blob([body], { type: 'application/json' });
+    if (!(navigator.sendBeacon && navigator.sendBeacon(LEAD_URL, blob))) {
+      fetch(LEAD_URL, { method: 'POST', headers: { 'content-type': 'application/json' }, body, keepalive: true }).catch(() => {});
+    }
+  } catch { /* o WhatsApp segue normalmente */ }
+}
+[sumSend, mbSend].forEach((a) => a && a.addEventListener('click', sendLead));
 
 let toastTimer;
 function toast(msg) {

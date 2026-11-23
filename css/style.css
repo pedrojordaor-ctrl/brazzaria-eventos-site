@@ -992,8 +992,8 @@ em { font-style: normal; color: var(--ember-2); }
 }
 .format--photo::after { display: none; }
 .format--feijoada { --photo: url("../assets/img/feijoada.webp"); --pos: right 40%; }
-.format--paella { --photo: url("../assets/img/paella.webp"); --pos: center 60%; }
-.format--hamburgada { --photo: url("../assets/img/hamburgada.webp?v=2"); }
+.format--paella { --photo: url("../assets/img/paella.webp?v=2"); --pos: center 60%; }
+.format--hamburgada { --photo: url("../assets/img/hamburgada.webp?v=3"); }
 .format--texmex { --photo: url("../assets/img/texmex.webp"); --pos: right center; }
 .formats__note { margin-top: 28px; font-size: 15px; color: var(--muted); }
 .formats__note a { color: var(--flame); text-underline-offset: 3px; }
